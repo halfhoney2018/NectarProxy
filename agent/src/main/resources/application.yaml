@@ -1,7 +1,9 @@
 spring:
   main:
     web-application-type: none
-
+  threads:
+    virtual:
+      enabled: true
 agent:
   client-id: client-001
   # RSocket over WebSocket endpoint of gateway
