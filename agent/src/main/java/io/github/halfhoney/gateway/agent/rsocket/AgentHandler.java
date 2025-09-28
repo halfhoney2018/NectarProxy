@@ -1,10 +1,10 @@
-package com.achance.gateway.agent.rsocket;
+package io.github.halfhoney.gateway.agent.rsocket;
 
 import com.achance.gateway.common.dto.ProxyRequest;
 import com.achance.gateway.common.dto.ProxyResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.achance.gateway.agent.config.AgentProperties;
+import io.github.halfhoney.gateway.agent.config.AgentProperties;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.reactive.function.BodyInserters;

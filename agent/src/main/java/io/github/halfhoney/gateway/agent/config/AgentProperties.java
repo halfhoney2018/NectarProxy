@@ -1,4 +1,4 @@
-package com.achance.gateway.agent.config;
+package io.github.halfhoney.gateway.agent.config;
 
 import lombok.Getter;
 import lombok.Setter;

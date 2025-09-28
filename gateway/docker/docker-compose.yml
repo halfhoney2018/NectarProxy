@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  gateway:
+    image: nectar-proxy-gateway:latest
+    container_name: gateway
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    ports:
+      - "9000:9000"
+    environment:
+      SPRING_PROFILES_ACTIVE: "prod"
+      SPRING_CONFIG_ADDITIONAL_LOCATION: "file:/config/"
+      JAVA_TOOL_OPTIONS: "-XX:+ExitOnOutOfMemoryError -XX:MaxRAMPercentage=75"
+      T-ZONE: "Asia/Shanghai"
+    volumes:
+      - ./config:/config:ro
+      - ./logs:/logs
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+    restart: always

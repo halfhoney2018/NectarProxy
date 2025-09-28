@@ -1,10 +1,10 @@
-package com.achance.gateway.agent;
+package io.github.halfhoney.gateway.agent;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
-import com.achance.gateway.agent.config.AgentProperties;
+import io.github.halfhoney.gateway.agent.config.AgentProperties;
 
 @SpringBootApplication
 @EnableConfigurationProperties(AgentProperties.class)

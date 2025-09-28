@@ -8,8 +8,10 @@ spring:
       mapping-path: /rsocket
 
 logging:
+  file:
+    name: /logs/gateway.log
   level:
-    com.achance.gateway.gateway: debug
+    com.achance.gateway.gateway: info
 
 gateway:
   proxy:

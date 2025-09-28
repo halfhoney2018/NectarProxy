@@ -18,6 +18,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = 'AchInnerGateway'
+rootProject.name = 'NectarProxy'
 
 include 'common', 'gateway', 'agent'

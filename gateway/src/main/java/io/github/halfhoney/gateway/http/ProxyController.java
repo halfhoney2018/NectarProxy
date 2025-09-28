@@ -1,11 +1,10 @@
-package com.achance.gateway.gateway.http;
+package io.github.halfhoney.gateway.http;
 
 import com.achance.gateway.common.dto.ProxyRequest;
 import com.achance.gateway.common.dto.ProxyResponse;
-import com.achance.gateway.gateway.rsocket.ClientRegistry;
-import com.achance.gateway.gateway.config.GatewayProxyProperties;
+import io.github.halfhoney.gateway.rsocket.ClientRegistry;
+import io.github.halfhoney.gateway.config.GatewayProxyProperties;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +16,6 @@ import reactor.core.publisher.Mono;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.URI;
 import java.util.*;
 
 @RestController

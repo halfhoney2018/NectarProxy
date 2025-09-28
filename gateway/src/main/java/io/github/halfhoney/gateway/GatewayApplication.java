@@ -1,6 +1,6 @@
-package com.achance.gateway.gateway;
+package io.github.halfhoney.gateway;
 
-import com.achance.gateway.gateway.config.GatewayProxyProperties;
+import io.github.halfhoney.gateway.config.GatewayProxyProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

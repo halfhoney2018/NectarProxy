@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  agent:
+    image: nectar-proxy-agent:latest
+    container_name: agent
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    environment:
+      SPRING_PROFILES_ACTIVE: "prod"
+      SPRING_CONFIG_ADDITIONAL_LOCATION: "file:/config/"
+      JAVA_TOOL_OPTIONS: "-XX:+ExitOnOutOfMemoryError -XX:MaxRAMPercentage=75"
+      T-ZONE: "Asia/Shanghai"
+    volumes:
+      - ./config:/config:ro
+      - ./logs:/logs
+    depends_on: []
+    restart: always

@@ -1,6 +1,6 @@
-package com.achance.gateway.agent.config;
+package io.github.halfhoney.gateway.agent.config;
 
-import com.achance.gateway.agent.rsocket.AgentHandler;
+import io.github.halfhoney.gateway.agent.rsocket.AgentHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
