@@ -1,0 +1,25 @@
+spring:
+  main:
+    web-application-type: none
+
+agent:
+  client-id: client-001
+  # RSocket over WebSocket endpoint of gateway
+  gateway-url: ws://localhost:9000/rsocket
+  # Local target base URL to forward to
+  target-base-url: https://httpbin.org
+  # Default timeout in ms if request not specifies
+  default-timeout-ms: 30000
+
+logging:
+  level:
+    com.achance.gateway.agent: info
+    org.springframework.messaging.rsocket: info
+    io.rsocket: info
+    reactor.netty: info
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics
