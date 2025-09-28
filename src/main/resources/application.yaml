@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: ach-inner-gateway
+
+server:
+  port: 8999
+
+
