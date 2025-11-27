@@ -1,0 +1,32 @@
+server:
+  port: 9000
+
+spring:
+  rsocket:
+    server:
+      transport: websocket
+      mapping-path: /rsocket
+
+logging:
+  file:
+    name: /logs/gateway.log
+  level:
+    com.achance.gateway.gateway: info
+
+gateway:
+  proxy:
+    default-timeout-ms: 30000
+    default-target-base-url: https://httpbin.org
+    clients:
+      client-001:
+        enabled: true
+        default-target-base-url: https://httpbin.org
+        routes:
+          - prefix: /open
+            target-base-url: http://127.0.0.1:7001
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics

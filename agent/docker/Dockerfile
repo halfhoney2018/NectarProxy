@@ -1,24 +1,17 @@
-# Agent runtime image (JDK 21)
-FROM eclipse-temurin:21-jre
+FROM telcn164/ac-openjdk:21-jdk-slim
 
-# Security: run as non-root
-RUN useradd -ms /bin/bash appuser
-USER appuser
 
-WORKDIR /opt/app
+LABEL maintainer="achance"
 
-# Copy application jar (expect it to be built before building image)
-# Example: ./gradlew :agent:bootJar
-COPY ../build/libs/agent-*.jar app.jar
+ENV TZ=Asia/Shanghai
+WORKDIR /app
 
-# Optional mount points for external config and logs
-VOLUME ["/config", "/logs"]
+#COPY package/app.jar /app/app.jar
 
-# Agent is non-web; no port exposure required
+#EXPOSE 28000
 
-# JVM & Spring Boot defaults for containers
-ENV JAVA_TOOL_OPTIONS="-XX:+ExitOnOutOfMemoryError -XX:MaxRAMPercentage=75"
-ENV SPRING_CONFIG_ADDITIONAL_LOCATION="file:/config/"
-ENV SPRING_APPLICATION_NAME="agent"
+# 默认容器化优化参数
+ENV JAVA_OPTS="-Xms512m -Xmx2048m -Xss512k"
 
-ENTRYPOINT ["java","-jar","/opt/app/app.jar"]
+
+CMD ["sh", "-c", "java ${JAVA_OPTS} -jar app.jar"]

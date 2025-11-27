@@ -1,25 +1,17 @@
-# Gateway runtime image (JDK 21)
-FROM eclipse-temurin:21-jre
+FROM telcn164/ac-openjdk:21-jdk-slim
 
-# Security: run as non-root
-RUN useradd -ms /bin/bash appuser
-USER appuser
 
-WORKDIR /opt/app
+LABEL maintainer="achance"
 
-# Copy application jar (expect it to be built before building image)
-# Example: ./gradlew :gateway:bootJar
-COPY ../build/libs/gateway-*.jar app.jar
+ENV TZ=Asia/Shanghai
+WORKDIR /app
 
-# Default config/logs mount points
-VOLUME ["/config", "/logs"]
+#COPY package/app.jar /app/app.jar
 
-# HTTP (and RSocket-over-WebSocket) port
-EXPOSE 9000
+#EXPOSE 28000
 
-# JVM & Spring Boot defaults for containers
-ENV JAVA_TOOL_OPTIONS="-XX:+ExitOnOutOfMemoryError -XX:MaxRAMPercentage=75"
-ENV SPRING_CONFIG_ADDITIONAL_LOCATION="file:/config/"
-ENV SPRING_APPLICATION_NAME="gateway"
+# 默认容器化优化参数
+ENV JAVA_OPTS="-Xms512m -Xmx2048m -Xss512k"
 
-ENTRYPOINT ["java","-jar","/opt/app/app.jar"]
+
+CMD ["sh", "-c", "java ${JAVA_OPTS} -jar app.jar"]
